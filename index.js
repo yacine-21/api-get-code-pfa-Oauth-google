@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
+const PORT = 8080
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/login/oauth2/code/google", (req, res) => {
-	console.log(decodeURIComponent(req.query.code));
-	res.send("<h1>Login Successful</h1>");
+	res.json(decodeURIComponent(req.query.code));
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
 	console.log("Server is running on port 8080");
 });
